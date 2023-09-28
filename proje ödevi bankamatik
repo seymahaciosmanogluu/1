@@ -1,0 +1,725 @@
+﻿// See https://aka.ms/new-console-template for more information
+using System;
+using System.Diagnostics.Metrics;
+using System.Threading;
+
+
+
+
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+
+    GERİSLEM1:
+
+        string dogrusifre = "ab18";
+
+    CIKIS:
+
+        int para = 2500;
+        int islem3;
+        int tutar;
+        string kartnumarası;
+        int kartnumarası1;
+        int tutar2;
+        int tutar3;
+        int tutar4;
+        int tutar5;
+        string hesapnumarası;
+        int hesapnumarası1;
+
+
+        Console.WriteLine("----ŞEYMA BANKA HOŞGELDİNİZ----");
+        Console.WriteLine("LÜTFEN İSTEDİĞİNİZ İŞLEMİ SEÇİNİZ:");
+        Console.WriteLine("KARTLI İŞLEM İÇİN 1'e BASINIZ");
+        Console.WriteLine("KARTSIZ İŞLEM İÇİN 2'e BASINIZ");
+
+        string islem1 = Console.ReadLine();
+
+        if (islem1 == "1")
+        {
+            Console.WriteLine("----KARTLI İŞLEM BÖLÜMÜ----");
+            int hak = 0;
+
+            while (hak < 3)
+            {
+                Console.WriteLine("LÜTFEN ŞİFRENİZİ GİRİNİZ");
+                string sifre = Console.ReadLine();
+
+                if (sifre == dogrusifre)
+                {
+                    Console.WriteLine("ŞİFRE DOĞRU");
+
+                    break;
+
+                }
+
+                else if (hak == 2)
+                {
+                    Console.WriteLine("HAKKINIZ BİTTİ");
+                    Thread.Sleep(8000);
+
+                    goto CIKIS;
+                }
+
+
+                else
+                {
+
+                    Console.WriteLine("ŞİFRE YANLIŞ");
+                    hak++;
+
+                }
+
+            }
+
+
+
+
+
+        ANAMENU:
+
+        GERİTRY1:
+
+            Console.WriteLine("PARA ÇEKMEK İÇİN 1'e BASINIZ ");
+            Console.WriteLine("PARA YATIRMAK İÇİN 2'e BASINIZ ");
+            Console.WriteLine("PARA TRANSFERLERİ İÇİN 3'e BASINIZ ");
+            Console.WriteLine("EĞİTİM ÖDEMLERİ İÇİN 4'e BASINIZ ");
+            Console.WriteLine("ÖDEMELER İÇİN 5'e BASINIZ ");
+            Console.WriteLine("BİLGİ GÜNCELLEME İÇİN 6'a BASINIZ ");
+
+            string islem2 = Console.ReadLine();
+
+
+
+            if (islem2 == "1")
+            {
+            DON1:
+            GERİBAKİYE:
+            GERİPARAÇEKME:
+
+                try
+                {
+                    Console.WriteLine("----PARA ÇEKME İŞLEMİ----:");
+                    Console.WriteLine("ÇEKECEĞİNİZ MİKTARI GİRİNİZ");
+                    tutar = Convert.ToInt32(Console.ReadLine());
+                }
+
+                catch (FormatException)
+                {
+                    Console.WriteLine("LÜTFEN GEÇERLİ PARA TUTARI GİRİNİZ");
+                    goto DON1;
+                }
+
+
+                if (tutar <= para)
+                {
+                    Console.WriteLine("İşleminiz Onaylanmıştır");
+                    para -= tutar;
+                    Console.WriteLine("Kalan bakiyeniz:" + para);
+                }
+
+                else
+                {
+                    Console.WriteLine("BAKİYE YETERSİZ");
+                    Console.WriteLine("Tekrar denemek istiyorsanız 1'e,istemiyorsanız 2'e basınız");
+
+                    int geri = Convert.ToInt32(Console.ReadLine());
+
+                    if (geri == 1)
+                    {
+                        goto GERİBAKİYE;
+                    }
+
+                    else
+                    {
+
+                    }
+
+
+                }
+
+
+                Console.WriteLine("GERİYE DÖNMEK İÇİN 8'e BASINIZ");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+                else if (islem3 == 8)
+                {
+                    goto GERİPARAÇEKME;
+                }
+            }
+
+            if (islem2 == "2")
+            {
+            GERİPARAYAT:
+            GERİTRY2:
+
+                Console.WriteLine("----PARA YATIRMA İŞLEMİ----");
+                Console.WriteLine("KREDİ KARTINA PARA YATIRMAK İSTİYOSAN 1'e BAS");
+                Console.WriteLine("KENDİ HESABINIZA PARA YATIRMAK İSTİYORSANIZ 2'e BASIN");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+
+                string islem4 = Console.ReadLine();
+
+
+                if (islem4 == "1")
+                {
+
+                    Console.WriteLine("KREDİ KARTINA PARA YATIRMA İŞLeMİ");
+
+                DON2:
+                GERİHATA1:
+                DON3:
+
+                    try
+                    {
+                        Console.WriteLine("12 HANELİ KART NUMARANIZI GİRİNİZ");
+                        kartnumarası = Console.ReadLine();
+                        kartnumarası1 = kartnumarası.Length;
+                    }
+
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("GEÇERLİ KART NUMARASI GİRİNİZ");
+                        goto DON2;
+                    }
+
+                    if (kartnumarası1 == 12)
+                    {
+                    GERİBAKİYE2:
+
+                        try
+                        {
+                            Console.WriteLine("YATIRMAK İSTEDİĞİNİZ BAKİYE");
+                            tutar2 = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("GEÇERLİ PARA TUTARI GİRİNİZ");
+                            goto DON3;
+                        }
+
+                        if (tutar2 <= para)
+                        {
+                            Console.WriteLine("İşleminiz Onaylanmıştır");
+                            para -= tutar2;
+                            Console.WriteLine("Kalan bakiyeniz:" + para);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("BAKİYE YETERSİZ");
+                            Console.WriteLine("Tekrar denemek istiyorsanız 1'e , istemiyorsanız 2'e basınız");
+
+                            int geri = Convert.ToInt32(Console.ReadLine());
+
+                            if (geri == 1)
+                            {
+                                goto GERİBAKİYE2;
+                            }
+
+                            else
+                            {
+
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("GİRDİĞİNİZ KART NUMARASI HATALI");
+                        Console.WriteLine("Tekrar denemek istiyorsanız 1'e , istemiyorsanız 2'e basınız");
+
+                        int geri2 = Convert.ToInt32(Console.ReadLine());
+
+                        if (geri2 == 1)
+                        {
+                            goto GERİHATA1;
+                        }
+
+                        else
+                        {
+
+                        }
+
+                    }
+
+                }
+                if (islem4 == "2")
+                {
+                    Console.WriteLine("KENDİ HESABINIZA PARA YATIRMA İŞLEMİ");
+
+                DON4:
+                    try
+                    {
+                        Console.WriteLine("Yatırmak istediğiniz tutarı giriniz");
+                        tutar3 = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("GEÇERLİ PARA TUTTARI GİRİNİZ");
+                        goto DON4;
+                    }
+                    para += tutar3;
+                    Console.WriteLine("Yeni bakiyeniniz:" + para);
+
+
+                }
+
+                if (islem4 == "9")
+                {
+                    goto ANAMENU;
+                }
+
+                if (islem4 == "0")
+                {
+                    goto CIKIS;
+                }
+
+                else if (islem4 != "1" && islem4 != "2" && islem4 != "9" && islem4 != "0")
+                {
+
+                    Console.WriteLine("Hatalı giriş yaptınız");
+                    goto GERİTRY2;
+                }
+
+                KAC2:
+
+                Console.WriteLine("GERİYE DÖNMEK İÇİN 8'e BASINIZ");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+                else if (islem3 == 8)
+                {
+                    goto GERİPARAYAT;
+                }
+                else
+                {
+                    Console.WriteLine("HATALI GİRİŞ YAPTINIZ");
+                    goto KAC2;
+                }
+            }
+
+
+            if (islem2 == "3")
+            {
+            GERİPARATRANS:
+            GERİTRY3:
+
+                Console.WriteLine("----PARA TRANSFERLERİ BÖLÜMÜ----");
+                Console.WriteLine("BAŞKA BİR HESABA EFT İÇİN 1'e BASIN");
+                Console.WriteLine("BAŞKA BİR HESABA HAVALE İÇİN 2'e BASIN");
+                int islem6 = Convert.ToInt32(Console.ReadLine());
+
+
+                if (islem6 == 1)
+
+                {
+
+                    Console.WriteLine("BAŞKA BİR HESABA EFT İŞLEMİ");
+
+                GERİHATA2:
+
+                    Console.WriteLine("En az 12 haneli EFT numarasını başında TR olarak giriniz:");
+                    string eftnumarası = Console.ReadLine();
+                    int eftnumarası1 = eftnumarası.Length;
+                    string eftnumarası2 = eftnumarası.Substring(0,2);
+
+                    if (eftnumarası1 >= 14 && eftnumarası2=="TR")
+                    {
+                    DON5:
+                    GERİBAKİYE3:
+
+                        try
+                        {
+                            Console.WriteLine("Yatırmak istediğiniz tutarı giriniz");
+                            tutar4 = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (FormatException) 
+                        {
+                            Console.WriteLine("GEÇERLİ PARA TUTTARI GİRİNİZ");
+                            goto DON5;
+                        }
+
+                        if (tutar4 <= para)
+                        {
+                            para -= tutar4;
+                            Console.WriteLine("Yeni bakiyeniniz:" + para);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("BAKİYE YETERSİZ");
+                            Console.WriteLine("Tekrar denemek istiyorsanız 1'e,istemiyorsanız 2'e basınız");
+
+                            int geri = Convert.ToInt32(Console.ReadLine());
+
+                            if (geri == 1)
+                            {
+                                goto GERİBAKİYE3;
+                            }
+
+                            else
+                            {
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("HATALI GİRDİNİZ");
+                        Console.WriteLine("Tekrar denemek istiyorsanız 1'e , istemiyorsanız 2'e basınız");
+
+                        int geri2 = Convert.ToInt32(Console.ReadLine());
+
+                        if (geri2 == 1)
+                        {
+                            goto GERİHATA2;
+                        }
+
+                        else
+                        {
+
+                        }
+                    }
+
+
+                }
+
+
+                if (islem6 == 2)
+                {
+
+                    Console.WriteLine("BAŞKA BİR HESABA HAVALE İŞLEMİ");
+
+                DON6:
+                GERİHATA3:
+
+                    try
+                    {
+                        Console.WriteLine("En az 12 haneli HESAP numarasını giriniz:");
+                        hesapnumarası = Console.ReadLine();
+                        hesapnumarası1 = hesapnumarası.Length;
+                        
+                        
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("GEÇERLİ HESAP NUMARASI GİRİNİZ");
+                        goto DON6;
+                    }
+
+                    if (hesapnumarası1 >= 12)
+                    {
+                    GERİBAKİYE4:
+                    DON7:
+                        try
+                        {
+                            Console.WriteLine("Yatırmak istediğiniz tutarı giriniz");
+                            tutar4 = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("GEÇERLİ PARA TUTARI GİRİNİZ");
+                            goto DON7;
+                        }
+
+                        if (tutar4 <= para)
+                        {
+                            para -= tutar4;
+                            Console.WriteLine("Yeni bakiyeniniz:" + para);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("BAKİYE YETERSİZ");
+                            Console.WriteLine("Tekrar denemek istiyorsanız 1'e,istemiyorsanız 2'e basınız");
+
+                            int geri = Convert.ToInt32(Console.ReadLine());
+
+                            if (geri == 1)
+                            {
+                                goto GERİBAKİYE4;
+                            }
+
+                            else
+                            {
+
+                            }
+
+                        }
+
+                    }
+
+
+                    else
+                    {
+
+                        Console.WriteLine("HATALI  GİRDİNİZ");
+                        Console.WriteLine("Tekrar denemek istiyorsanız 1'e , istemiyorsanız 2'e basınız");
+
+                        int geri2 = Convert.ToInt32(Console.ReadLine());
+
+                        if (geri2 == 1)
+                        {
+                            goto GERİHATA3;
+                        }
+
+                        else
+                        {
+
+                        }
+                    }
+
+
+
+                }
+                else
+                {
+                    Console.WriteLine("Hatalı giriş yaptınız");
+                    goto GERİTRY3;
+                }
+
+                KAC3:
+
+                Console.WriteLine("GERİYE DÖNMEK İÇİN 8'e BASINIZ");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+                else if (islem3 == 8)
+                {
+                    goto GERİPARATRANS;
+                }
+                else
+                {
+                    Console.WriteLine("HATALI GİRİŞ YAPTINIZ");
+                    goto KAC3;
+                }
+
+
+            }
+
+            if (islem2 == "4")
+            {
+            GERİTRY9:
+
+                Console.WriteLine("----EĞİTİM ÖDEMLERİ KISMI----");
+                Console.WriteLine("EĞİTİM ÖDEMELERİ KISMI ARIZALI");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+                else
+                {
+                    Console.WriteLine("HATALI GİRİŞ");
+                    goto GERİTRY9;
+                }
+
+            }
+
+
+
+            if (islem2 == "5")
+            {
+            GERİFATURA:
+            GERİTRY4:
+
+                Console.WriteLine("----ÖDEMELER KISMI----");
+                Console.WriteLine("Elektirik faturası için 1 basın ");
+                Console.WriteLine("Telefon faturası için 2 basın ");
+                Console.WriteLine("İnternet faturası için 3 basın ");
+                Console.WriteLine("Su faturası için 4 basın ");
+                Console.WriteLine("OGS ödemleri için 5 basın ");
+                int islem7 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem7 == 1 || islem7 == 2 || islem7 == 3 || islem7 == 4 || islem7 == 5)
+                {
+                GERİBAKİYE5:
+                DON8:
+
+                    try
+                    {
+                        Console.WriteLine("Fatura tutarını giriniz:");
+                        tutar5 = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("GEÇERLİ PARA TUTARI GİRİNİZ");
+                        goto DON8;
+                    }
+
+                    if (tutar5 <= para)
+                    {
+                        para -= tutar5;
+                        Console.WriteLine("Yeni bakiyeniniz:" + para);
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("BAKİYE YETERSİZ");
+                        Console.WriteLine("Tekrar denemek istiyorsanız 1'e,istemiyorsanız 2'e basınız");
+
+                        int geri = Convert.ToInt32(Console.ReadLine());
+
+                        if (geri == 1)
+                        {
+                            goto GERİBAKİYE5;
+                        }
+
+                        else
+                        {
+
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("HATALI GİRİŞ YAPTINIZ");
+                    goto GERİTRY4;
+                }
+
+                KAC1:
+                
+                Console.WriteLine("GERİYE DÖNMEK İÇİN 8'e BASINIZ");
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+                else if (islem3 == 8)
+                {
+                    goto GERİFATURA;
+                }
+                else
+                {
+                    Console.WriteLine("HATALI GİRİŞ YAPTINIZ");
+                    goto KAC1;
+                }
+
+            }
+
+
+
+            if (islem2 == "6")
+            {
+            GERİTRY5:
+
+                Console.WriteLine("----BİLGİ GÜNCELLEME İŞLEMİ-----");
+                Console.WriteLine("ŞİFRE DEĞİŞTİTMEK İÇİN 1'e BASINIZ");
+                int islem8 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem8 == 1)
+
+                {
+
+                    Console.WriteLine("YENİ ŞİFRENİZİ GİRİNİZ:");
+                    string yenisifre = Console.ReadLine();
+                    dogrusifre = yenisifre;
+
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Hatalı giriş yaptınız");
+                    goto GERİTRY5;
+                }
+
+                Console.WriteLine("ANA MENÜYE DÖNMEK İÇİN 9'e BASINIZ");
+                Console.WriteLine("ÇIKIŞ YAPMAK İÇİN 0'e BASINIZ");
+                islem3 = Convert.ToInt32(Console.ReadLine());
+
+                if (islem3 == 9)
+                {
+                    goto ANAMENU;
+                }
+                else if (islem3 == 0)
+                {
+                    goto CIKIS;
+                }
+
+            }
+
+            else
+            {
+                Console.WriteLine("Hatalı giriş yaptınız");
+                goto GERİTRY1;
+            }
+
+
+        }
+
+
+        if (islem1 == "2")
+        {
+            Console.WriteLine("----KARTSIZ İŞLEM KISMI---- \n İŞLEM YAPILAMAMKTADIR");
+                
+
+        }
+
+        else
+        {
+            Console.WriteLine("HATALI GİRİŞ YAPTINIZ");
+            goto GERİSLEM1;
+        }
+
+        Console.ReadLine();
+
+       
+    }
+
+
+
+}
+
